@@ -21,7 +21,7 @@ public class Tienda extends AppCompatActivity {
     BigInteger suma;
     int click = 1;
     int contpesao=0;
-    int incremento = 0;
+    int incremento;
     BigInteger precio;
     BigInteger precioraton;
     BigInteger valGordo;
@@ -34,10 +34,14 @@ public class Tienda extends AppCompatActivity {
         compra= findViewById(R.id.textomejora3);
         compraraton = findViewById(R.id.textomejora23);
         valGordo = new BigInteger("0");
-        precio = new BigInteger("100");
-        precioraton = new BigInteger("150");
         Bundle extras = getIntent().getExtras();
         String dinero =extras.getString("dinero");
+        incremento = extras.getInt("sumaraton");
+        click = extras.getInt("click");
+
+        precio = new BigInteger("100");
+
+        precioraton = new BigInteger("150");
         suma = new BigInteger(dinero);
         contador.setText(suma.toString());
     }
@@ -98,11 +102,16 @@ public class Tienda extends AppCompatActivity {
         }
         }
     }
+
     public void volverDeTienda(View v){
-        Intent intent = new Intent();
-        intent.putExtra("dinero", suma.toString());
-        setResult(RESULT_OK, intent);
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("dinero", suma.toString());
+        i.putExtra("sumaraton", incremento);
+        i.putExtra("click", click);
+        i.putExtra("precio", precio);
+        i.putExtra("precioraton", precioraton);
         finish();
+        startActivity(i);
     }
 
 }
