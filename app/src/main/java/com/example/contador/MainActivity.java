@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button compra, compraraton;
     ImageView prick;
     BigInteger suma;
-    int click = 1;
+    int click = 50;
     int contpesao=0;
     int incremento = 0;
     BigInteger precio;
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         contador = (TextView) findViewById(R.id.texto);
         prick = findViewById(R.id.imagen1);
         valGordo = new BigInteger("0");
-        if (extras.isEmpty()) {
+        if (extras==null) {
             suma = new BigInteger("0");//suma = Integer.parseInt( contador.getText().toString());
             precio = new BigInteger("100");
             precioraton = new BigInteger("150");
         }else {
-            suma = new BigInteger(extras.getString("dinero"));
+            suma = new BigInteger(extras.getString("suma"));
             precio = new BigInteger(extras.getString("precio"));
             precioraton = new BigInteger(extras.getString("precioraton"));
             incremento = extras.getInt("sumaraton");
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("click", click);
         i.putExtra("precio", precio.toString());
         i.putExtra("precioraton", precioraton.toString());
-        finish();
         startActivity(i);
+        finish();
     }
 }
