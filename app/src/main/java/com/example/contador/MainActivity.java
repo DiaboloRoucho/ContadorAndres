@@ -37,12 +37,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Bundle extras = getIntent().getExtras();
         contador = (TextView) findViewById(R.id.texto);
         prick = findViewById(R.id.imagen1);
-        suma = new BigInteger("0");//suma = Integer.parseInt( contador.getText().toString());
         valGordo = new BigInteger("0");
-        precio = new BigInteger("100");
-        precioraton = new BigInteger("150");
+        if (extras.isEmpty()) {
+            suma = new BigInteger("0");//suma = Integer.parseInt( contador.getText().toString());
+            precio = new BigInteger("100");
+            precioraton = new BigInteger("150");
+        }else {
+            suma = new BigInteger(extras.getString("dinero"));
+            precio = new BigInteger(extras.getString("precio"));
+            precioraton = new BigInteger(extras.getString("precioraton"));
+            incremento = extras.getInt("sumaraton");
+            click = extras.getInt("click");
+        }
         incTemporal();
     }
 
@@ -90,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("dinero", suma.toString());
         i.putExtra("sumaraton", incremento);
         i.putExtra("click", click);
-
+        i.putExtra("precio", precio.toString());
+        i.putExtra("precioraton", precioraton.toString());
         finish();
         startActivity(i);
     }

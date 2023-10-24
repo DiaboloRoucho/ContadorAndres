@@ -26,6 +26,7 @@ public class Tienda extends AppCompatActivity {
     BigInteger precioraton;
     BigInteger valGordo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +40,11 @@ public class Tienda extends AppCompatActivity {
         incremento = extras.getInt("sumaraton");
         click = extras.getInt("click");
 
-        precio = new BigInteger("100");
-
-        precioraton = new BigInteger("150");
+        String precio1= extras.getString("precio");
+        String precio2= extras.getString("precioraton");
         suma = new BigInteger(dinero);
+        precio = new BigInteger(precio1);
+        precioraton = new BigInteger(precio2);
         contador.setText(suma.toString());
     }
 
@@ -108,7 +110,7 @@ public class Tienda extends AppCompatActivity {
         i.putExtra("dinero", suma.toString());
         i.putExtra("sumaraton", incremento);
         i.putExtra("click", click);
-        i.putExtra("precio", precio);
+        i.putExtra("precio", precio.toString());
         i.putExtra("precioraton", precioraton);
         finish();
         startActivity(i);
