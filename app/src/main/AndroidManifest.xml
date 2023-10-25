@@ -30,7 +30,9 @@
         <activity android:name=".PantallaOpciones">
 
         </activity>
-        <activity android:name=".Tienda"/>
+        <activity android:name=".Tienda">
+
+        </activity>
     </application>
 
 </manifest>

@@ -42,6 +42,17 @@ public class Tienda extends AppCompatActivity {
         suma = new BigInteger(extras.getString("dinero"));
         precioraton = new BigInteger(extras.getString("precioraton"));
         contador.setText(suma.toString());
+        if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
+            valGordo = suma.divide(BigInteger.valueOf(1000000));
+            contador.setText(String.valueOf(valGordo)+" millones");
+        } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
+            valGordo = suma.divide(BigInteger.valueOf(1000));
+            contador.setText(String.valueOf(valGordo)+" miles");
+        }else {
+            contador.setText(suma.toString());
+        }
+        compra.setText(String.valueOf(precio)+ " Pepinillos");
+        compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
     }
 
     public void compraclick(View v){
@@ -107,7 +118,7 @@ public class Tienda extends AppCompatActivity {
         i.putExtra("sumaraton", incremento);
         i.putExtra("click", click);
         i.putExtra("precio", precio.toString());
-        i.putExtra("precioraton", precioraton);
+        i.putExtra("precioraton", precioraton.toString());
         startActivity(i);
         finish();
     }

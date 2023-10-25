@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             precio = new BigInteger("100");
             precioraton = new BigInteger("150");
         }else {
+            //Log.e("localizador",extras.getString("precioraton")+ " " );
             suma = new BigInteger(extras.getString("suma"));
             precio = new BigInteger(extras.getString("precio"));
             precioraton = new BigInteger(extras.getString("precioraton"));
@@ -88,7 +90,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 suma = suma.add(BigInteger.valueOf(incremento));
                 handler.post(()->{
-                    contador.setText(suma.toString());
+                    if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
+                        valGordo = suma.divide(BigInteger.valueOf(1000000));
+                        contador.setText(String.valueOf(valGordo)+" millones");
+                    } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
+                        valGordo = suma.divide(BigInteger.valueOf(1000));
+                        contador.setText(String.valueOf(valGordo)+" miles");
+                    }else {
+                        contador.setText(suma.toString());
+                    }
                 });
             }
         });
