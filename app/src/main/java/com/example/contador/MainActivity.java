@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button compra, compraraton;
     ImageView prick;
     BigInteger suma;
-    int click = 50;
+    int click = 1;
     int contpesao=0;
     int incremento = 0;
     BigInteger precio;
