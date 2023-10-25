@@ -2,6 +2,8 @@ package com.example.contador;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.math.BigInteger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class Tienda extends AppCompatActivity {
@@ -41,7 +45,6 @@ public class Tienda extends AppCompatActivity {
         precio= new BigInteger(extras.getString("precio"));
         suma = new BigInteger(extras.getString("dinero"));
         precioraton = new BigInteger(extras.getString("precioraton"));
-        contador.setText(suma.toString());
         if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
             valGordo = suma.divide(BigInteger.valueOf(1000000));
             contador.setText(String.valueOf(valGordo)+" millones");
@@ -53,6 +56,7 @@ public class Tienda extends AppCompatActivity {
         }
         compra.setText(String.valueOf(precio)+ " Pepinillos");
         compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
+        incTemporal();
     }
 
     public void compraclick(View v){
@@ -121,6 +125,34 @@ public class Tienda extends AppCompatActivity {
         i.putExtra("precioraton", precioraton.toString());
         startActivity(i);
         finish();
+    }
+    public void incTemporal(){
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(()->{
+
+            while (true){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                suma = suma.add(BigInteger.valueOf(incremento));
+                handler.post(()->{
+                    if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
+                        valGordo = suma.divide(BigInteger.valueOf(1000000));
+                        contador.setText(String.valueOf(valGordo)+" millones");
+                    } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
+                        valGordo = suma.divide(BigInteger.valueOf(1000));
+                        contador.setText(String.valueOf(valGordo)+" miles");
+                    }else {
+                        contador.setText(suma.toString());
+                    }
+                });
+            }
+        });
     }
 
 }

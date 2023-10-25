@@ -53,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
             precioraton = new BigInteger(extras.getString("precioraton"));
             incremento = extras.getInt("sumaraton");
             click = extras.getInt("click");
+            if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
+                valGordo = suma.divide(BigInteger.valueOf(1000000));
+                contador.setText(String.valueOf(valGordo)+" millones");
+            } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
+                valGordo = suma.divide(BigInteger.valueOf(1000));
+                contador.setText(String.valueOf(valGordo)+" miles");
+            }else {
+                contador.setText(suma.toString());
+            }
         }
         incTemporal();
     }
