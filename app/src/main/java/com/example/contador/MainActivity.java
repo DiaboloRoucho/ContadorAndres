@@ -53,15 +53,7 @@ public class MainActivity extends AppCompatActivity {
             precioraton = new BigInteger(extras.getString("precioraton"));
             incremento = extras.getInt("sumaraton");
             click = extras.getInt("click");
-            if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-                valGordo = suma.divide(BigInteger.valueOf(1000000));
-                contador.setText(String.valueOf(valGordo)+" millones");
-            } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-                valGordo = suma.divide(BigInteger.valueOf(1000));
-                contador.setText(String.valueOf(valGordo)+" miles");
-            }else {
-                contador.setText(suma.toString());
-            }
+            format(suma);
         }
         incTemporal();
     }
@@ -69,19 +61,22 @@ public class MainActivity extends AppCompatActivity {
     public void sumar(View v) {
 
         suma = suma.add(BigInteger.valueOf(click));
-        if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-            valGordo = suma.divide(BigInteger.valueOf(1000000));
-            contador.setText(String.valueOf(valGordo)+" millones");
-        } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-            valGordo = suma.divide(BigInteger.valueOf(1000));
-            contador.setText(String.valueOf(valGordo)+" miles");
-        }else {
-            contador.setText(suma.toString());
-        }
+        format(suma);
         contpesao=0;
         ScaleAnimation fade_in = new ScaleAnimation(0.7f, 1.2f, 0.7f, 1.2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         fade_in.setDuration(500);
         prick.startAnimation(fade_in);
+    }
+    public void format(BigInteger x){
+        if (x.compareTo(BigInteger.valueOf(1000000))>=0){
+            valGordo = x.divide(BigInteger.valueOf(1000000));
+            contador.setText(String.valueOf(valGordo)+" millones");
+        } else if (x.compareTo(BigInteger.valueOf(1000))>=0) {
+            valGordo = x.divide(BigInteger.valueOf(1000));
+            contador.setText(String.valueOf(valGordo)+" miles");
+        }else {
+            contador.setText(suma.toString());
+        }
     }
 
     public void incTemporal(){
@@ -99,15 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 suma = suma.add(BigInteger.valueOf(incremento));
                 handler.post(()->{
-                    if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-                        valGordo = suma.divide(BigInteger.valueOf(1000000));
-                        contador.setText(String.valueOf(valGordo)+" millones");
-                    } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-                        valGordo = suma.divide(BigInteger.valueOf(1000));
-                        contador.setText(String.valueOf(valGordo)+" miles");
-                    }else {
-                        contador.setText(suma.toString());
-                    }
+                    format(suma);
                 });
             }
         });

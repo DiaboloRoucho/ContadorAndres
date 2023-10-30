@@ -45,15 +45,7 @@ public class Tienda extends AppCompatActivity {
         precio= new BigInteger(extras.getString("precio"));
         suma = new BigInteger(extras.getString("dinero"));
         precioraton = new BigInteger(extras.getString("precioraton"));
-        if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-            valGordo = suma.divide(BigInteger.valueOf(1000000));
-            contador.setText(String.valueOf(valGordo)+" millones");
-        } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-            valGordo = suma.divide(BigInteger.valueOf(1000));
-            contador.setText(String.valueOf(valGordo)+" miles");
-        }else {
-            contador.setText(suma.toString());
-        }
+        format(suma);
         compra.setText(String.valueOf(precio)+ " Pepinillos");
         compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
         incTemporal();
@@ -66,15 +58,7 @@ public class Tienda extends AppCompatActivity {
             click++;
             contador.setText(suma.toString());
             precio = precio.add(BigInteger.valueOf(20));
-            if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-                valGordo = suma.divide(BigInteger.valueOf(1000000));
-                contador.setText(String.valueOf(valGordo)+" millones");
-            } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-                valGordo = suma.divide(BigInteger.valueOf(1000));
-                contador.setText(String.valueOf(valGordo)+" miles");
-            }else {
-                contador.setText(suma.toString());
-            }
+            format(suma);
             compra.setText(String.valueOf(precio)+ " Pepinillos");
 
         }else {if (contpesao>=5) {
@@ -94,15 +78,7 @@ public class Tienda extends AppCompatActivity {
             suma = suma.subtract(precioraton);
             incremento++;
             precioraton = precioraton.add(BigInteger.valueOf(50));
-            if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-                valGordo = suma.divide(BigInteger.valueOf(1000000));
-                contador.setText(String.valueOf(valGordo)+" millones");
-            } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-                valGordo = suma.divide(BigInteger.valueOf(1000));
-                contador.setText(String.valueOf(valGordo)+" miles");
-            }else {
-                contador.setText(suma.toString());
-            }
+            format(suma);
             compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
 
         }else {if (contpesao>=5) {
@@ -141,18 +117,21 @@ public class Tienda extends AppCompatActivity {
                 }
                 suma = suma.add(BigInteger.valueOf(incremento));
                 handler.post(()->{
-                    if (suma.compareTo(BigInteger.valueOf(1000000))>=0){
-                        valGordo = suma.divide(BigInteger.valueOf(1000000));
-                        contador.setText(String.valueOf(valGordo)+" millones");
-                    } else if (suma.compareTo(BigInteger.valueOf(1000))>=0) {
-                        valGordo = suma.divide(BigInteger.valueOf(1000));
-                        contador.setText(String.valueOf(valGordo)+" miles");
-                    }else {
-                        contador.setText(suma.toString());
-                    }
+                    format(suma);
                 });
             }
         });
+    }
+    public void format(BigInteger x){
+        if (x.compareTo(BigInteger.valueOf(1000000))>=0){
+            valGordo = x.divide(BigInteger.valueOf(1000000));
+            contador.setText(String.valueOf(valGordo)+" millones");
+        } else if (x.compareTo(BigInteger.valueOf(1000))>=0) {
+            valGordo = x.divide(BigInteger.valueOf(1000));
+            contador.setText(String.valueOf(valGordo)+" miles");
+        }else {
+            contador.setText(suma.toString());
+        }
     }
 
 }
