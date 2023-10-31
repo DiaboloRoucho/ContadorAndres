@@ -22,7 +22,6 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     TextView contador;
-    Button compra, compraraton;
     ImageView prick;
     BigInteger suma, click, incremento, precio, precioraton, valGordo;
     int contpesao=0;
