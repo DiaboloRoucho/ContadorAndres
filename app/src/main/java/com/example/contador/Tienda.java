@@ -22,13 +22,8 @@ public class Tienda extends AppCompatActivity {
     TextView contador;
     Button compra, compraraton;
     ImageView prick;
-    BigInteger suma;
-    int click = 1;
+    BigInteger suma, click, incremento, precio, precioraton, valGordo;
     int contpesao=0;
-    int incremento;
-    BigInteger precio;
-    BigInteger precioraton;
-    BigInteger valGordo;
 
 
     @Override
@@ -40,8 +35,8 @@ public class Tienda extends AppCompatActivity {
         compraraton = findViewById(R.id.textomejora23);
         valGordo = new BigInteger("0");
         Bundle extras = getIntent().getExtras();
-        incremento = extras.getInt("sumaraton");
-        click = extras.getInt("click");
+        incremento = new BigInteger(extras.getString("sumaraton"));
+        click = new BigInteger(extras.getString("click"));
         precio= new BigInteger(extras.getString("precio"));
         suma = new BigInteger(extras.getString("dinero"));
         precioraton = new BigInteger(extras.getString("precioraton"));
@@ -55,7 +50,7 @@ public class Tienda extends AppCompatActivity {
 
         if (suma.compareTo(BigInteger.valueOf(precio.intValue()))>=0) {
             suma = suma.subtract(precio);
-            click++;
+            click = click.add(new BigInteger("1"));
             contador.setText(suma.toString());
             precio = precio.add(BigInteger.valueOf(20));
             format(suma);
@@ -76,7 +71,7 @@ public class Tienda extends AppCompatActivity {
     public void inc(View v){
         if (suma.compareTo(BigInteger.valueOf(precioraton.intValue()))>=0) {
             suma = suma.subtract(precioraton);
-            incremento++;
+            incremento = incremento.add(new BigInteger("1"));
             precioraton = precioraton.add(BigInteger.valueOf(50));
             format(suma);
             compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
@@ -115,7 +110,7 @@ public class Tienda extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                suma = suma.add(BigInteger.valueOf(incremento));
+                suma = suma.add(incremento);
                 handler.post(()->{
                     format(suma);
                 });

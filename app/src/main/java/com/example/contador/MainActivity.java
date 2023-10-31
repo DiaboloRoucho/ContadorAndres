@@ -24,13 +24,8 @@ public class MainActivity extends AppCompatActivity {
     TextView contador;
     Button compra, compraraton;
     ImageView prick;
-    BigInteger suma;
-    int click = 1;
+    BigInteger suma, click, incremento, precio, precioraton, valGordo;
     int contpesao=0;
-    int incremento = 0;
-    BigInteger precio;
-    BigInteger precioraton;
-    BigInteger valGordo;
 
 
 
@@ -46,13 +41,15 @@ public class MainActivity extends AppCompatActivity {
             suma = new BigInteger("0");//suma = Integer.parseInt( contador.getText().toString());
             precio = new BigInteger("100");
             precioraton = new BigInteger("150");
+            click = new BigInteger("1");
+            incremento = new BigInteger("0");
         }else {
             //Log.e("localizador",extras.getString("precioraton")+ " " );
             suma = new BigInteger(extras.getString("suma"));
             precio = new BigInteger(extras.getString("precio"));
             precioraton = new BigInteger(extras.getString("precioraton"));
-            incremento = extras.getInt("sumaraton");
-            click = extras.getInt("click");
+            incremento = new BigInteger(extras.getString("sumaraton"));
+            click = new BigInteger(extras.getString("click"));
             format(suma);
         }
         incTemporal();
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sumar(View v) {
 
-        suma = suma.add(BigInteger.valueOf(click));
+        suma = suma.add(click);
         format(suma);
         contpesao=0;
         ScaleAnimation fade_in = new ScaleAnimation(0.7f, 1.2f, 0.7f, 1.2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                suma = suma.add(BigInteger.valueOf(incremento));
+                suma = suma.add(incremento);
                 handler.post(()->{
                     format(suma);
                 });
