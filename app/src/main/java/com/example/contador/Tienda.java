@@ -90,8 +90,8 @@ public class Tienda extends AppCompatActivity {
     public void volverDeTienda(View v){
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("suma", suma.toString());
-        i.putExtra("sumaraton", incremento);
-        i.putExtra("click", click);
+        i.putExtra("sumaraton", incremento.toString());
+        i.putExtra("click", click.toString());
         i.putExtra("precio", precio.toString());
         i.putExtra("precioraton", precioraton.toString());
         startActivity(i);

@@ -100,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
     public void irTienda(View v){
         Intent i = new Intent(this, Tienda.class);
         i.putExtra("dinero", suma.toString());
-        i.putExtra("sumaraton", incremento);
-        i.putExtra("click", click);
+        i.putExtra("sumaraton", incremento.toString());
+        i.putExtra("click", click.toString());
         i.putExtra("precio", precio.toString());
         i.putExtra("precioraton", precioraton.toString());
         startActivity(i);
