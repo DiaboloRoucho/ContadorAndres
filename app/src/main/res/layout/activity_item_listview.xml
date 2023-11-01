@@ -5,14 +5,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemLayout"
-        android:background="#824848"
-        android:layout_width="match_parent"
+        android:background="@drawable/borde_redondo"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+
+        android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/itemImageView"
