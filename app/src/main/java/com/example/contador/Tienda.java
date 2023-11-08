@@ -20,9 +20,9 @@ import java.util.concurrent.Executors;
 public class Tienda extends AppCompatActivity {
 
     TextView contador;
-    Button compra, compraraton;
+    Button compra, compraraton, compra2, compra3;
     ImageView prick;
-    BigInteger suma, click, incremento, precio, precioraton, valGordo;
+    BigInteger suma, click, incremento, precio, precioraton, valGordo, inc2, precio2, inc3, precio3, n1, n2, n3;
     int contpesao=0;
 
 
@@ -33,6 +33,8 @@ public class Tienda extends AppCompatActivity {
         contador = (TextView) findViewById(R.id.texto);
         compra= findViewById(R.id.textomejora3);
         compraraton = findViewById(R.id.textomejora23);
+        compra2= findViewById(R.id.textomejora33);
+        compra3= findViewById(R.id.textomejora43);
         valGordo = new BigInteger("0");
         Bundle extras = getIntent().getExtras();
         incremento = new BigInteger(extras.getString("sumaraton"));
@@ -40,9 +42,18 @@ public class Tienda extends AppCompatActivity {
         precio= new BigInteger(extras.getString("precio"));
         suma = new BigInteger(extras.getString("dinero"));
         precioraton = new BigInteger(extras.getString("precioraton"));
+        inc2 = new BigInteger(extras.getString("inc2"));
+        precio2 = new BigInteger(extras.getString("precio2"));
+        inc3 = new BigInteger(extras.getString("inc3"));
+        precio3 = new BigInteger(extras.getString("precio3"));
+        n1 = new BigInteger(extras.getString("n1"));
+        n2 = new BigInteger(extras.getString("n2"));
+        n3 = new BigInteger(extras.getString("n3"));
         format(suma);
         compra.setText(String.valueOf(precio)+ " Pepinillos");
         compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
+        compra2.setText(String.valueOf(precio2)+ " Pepinillos");
+        compra3.setText(String.valueOf(precio3)+ " Pepinillos");
         incTemporal();
     }
 
@@ -74,7 +85,45 @@ public class Tienda extends AppCompatActivity {
             incremento = incremento.add(new BigInteger("1"));
             precioraton = precioraton.add(BigInteger.valueOf(50));
             format(suma);
+            n1 = n1.add(new BigInteger("1"));
             compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
+
+        }else {if (contpesao>=5) {
+            Toast tpesao = Toast.makeText(this, R.string.pesao, Toast.LENGTH_LONG);
+            tpesao.show();
+        }else{
+            Toast toast = Toast.makeText(this, R.string.nopepis, Toast.LENGTH_SHORT);
+            toast.show();
+            contpesao++;
+        }
+        }
+    }public void inc2(View v){
+        if (suma.compareTo(BigInteger.valueOf(precio2.intValue()))>=0) {
+            suma = suma.subtract(precio2);
+            inc2 = inc2.add(new BigInteger("2"));
+            precio2 = precio2.add(BigInteger.valueOf(100));
+            format(suma);
+            n2 = n2.add(new BigInteger("1"));
+            compra2.setText(String.valueOf(precio2)+ " Pepinillos");
+
+        }else {if (contpesao>=5) {
+            Toast tpesao = Toast.makeText(this, R.string.pesao, Toast.LENGTH_LONG);
+            tpesao.show();
+        }else{
+            Toast toast = Toast.makeText(this, R.string.nopepis, Toast.LENGTH_SHORT);
+            toast.show();
+            contpesao++;
+        }
+        }
+    }
+    public void inc3(View v){
+        if (suma.compareTo(BigInteger.valueOf(precio3.intValue()))>=0) {
+            suma = suma.subtract(precio3);
+            inc3 = inc3.add(new BigInteger("4"));
+            precio3 = precio3.add(BigInteger.valueOf(200));
+            format(suma);
+            n3 = n3.add(new BigInteger("1"));
+            compra3.setText(String.valueOf(precio3)+ " Pepinillos");
 
         }else {if (contpesao>=5) {
             Toast tpesao = Toast.makeText(this, R.string.pesao, Toast.LENGTH_LONG);
@@ -94,6 +143,13 @@ public class Tienda extends AppCompatActivity {
         i.putExtra("click", click.toString());
         i.putExtra("precio", precio.toString());
         i.putExtra("precioraton", precioraton.toString());
+        i.putExtra("precio2", precio2.toString());
+        i.putExtra("inc2", inc2.toString());
+        i.putExtra("precio3", precio3.toString());
+        i.putExtra("inc3", inc3.toString());
+        i.putExtra("n1", n1.toString());
+        i.putExtra("n2", n2.toString());
+        i.putExtra("n3", n3.toString());
         startActivity(i);
         finish();
     }
@@ -106,11 +162,29 @@ public class Tienda extends AppCompatActivity {
 
             while (true){
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(333);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
                 suma = suma.add(incremento);
+                handler.post(()->{
+                    format(suma);
+                });
+                try {
+                    Thread.sleep(333);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                suma = suma.add(inc2);
+                handler.post(()->{
+                    format(suma);
+                });
+                try {
+                    Thread.sleep(333);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                suma = suma.add(inc3);
                 handler.post(()->{
                     format(suma);
                 });

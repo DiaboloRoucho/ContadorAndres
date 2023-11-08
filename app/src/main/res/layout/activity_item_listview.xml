@@ -6,19 +6,18 @@
         xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemLayout"
         android:background="@drawable/borde_redondo"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center_vertical"
-
         android:layout_margin="5dp">
 
             <ImageView
                 android:id="@+id/itemImageView"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/person_pin_fill0_wght400_grad0_opsz24"
                 tools:layout_editor_absoluteX="69dp"
@@ -30,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_marginLeft="-30dp">
                 <TextView
                     android:id="@+id/itemTextView1"
                     android:layout_width="wrap_content"

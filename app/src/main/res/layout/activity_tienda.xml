@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4">
+        app:layout_constraintVertical_bias="0.2">
 
         <ImageView
             android:id="@+id/compraclick"
@@ -45,7 +45,8 @@
             android:layout_height="match_parent"
             android:background="#47975D"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/textomejora1"
@@ -82,7 +83,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:background="#47975D"
@@ -91,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.3">
+        app:layout_constraintVertical_bias="0.1">
 
         <ImageView
             android:layout_width="120dp"
@@ -102,7 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/textomejora21"
@@ -135,6 +137,116 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:background="#47975D"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/botonVolver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.1"
+       >
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"></ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textomejora31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Plumbus Automático"
+                android:textColor="#FAFFFFFF"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textomejora32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="+2 clicks/segundo"
+                android:textColor="#FAFFFFFF"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/textomejora33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="inc2"
+                android:padding="3dp"
+                android:text="300 Pepinillos"
+                android:textColor="#FAFFFFFF"
+                android:textSize="20dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:background="#47975D"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/botonVolver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/raton"
+            ></ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textomejora41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Pichones de Persona-Pájaro"
+                android:textColor="#FAFFFFFF"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textomejora42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="+4 clicks/segundo"
+                android:textColor="#FAFFFFFF"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/textomejora43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="inc3"
+                android:padding="3dp"
+                android:text="600 Pepinillos"
+                android:textColor="#FAFFFFFF"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+
     <Button
         android:id="@+id/botonVolver"
         android:layout_width="wrap_content"
@@ -143,7 +255,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         android:onClick="volverDeTienda"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
