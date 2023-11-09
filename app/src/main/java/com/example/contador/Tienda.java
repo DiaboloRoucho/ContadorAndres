@@ -66,6 +66,7 @@ public class Tienda extends AppCompatActivity {
             precio = precio.add(BigInteger.valueOf(20));
             format(suma);
             compra.setText(String.valueOf(precio)+ " Pepinillos");
+            n1 = n1.add(new BigInteger("1"));
 
         }else {if (contpesao>=5) {
             Toast tpesao = Toast.makeText(this, R.string.pesao, Toast.LENGTH_LONG);
@@ -85,7 +86,6 @@ public class Tienda extends AppCompatActivity {
             incremento = incremento.add(new BigInteger("1"));
             precioraton = precioraton.add(BigInteger.valueOf(50));
             format(suma);
-            n1 = n1.add(new BigInteger("1"));
             compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
 
         }else {if (contpesao>=5) {

@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
             rv.setHasFixedSize(true);
             rv.setLayoutManager(new LinearLayoutManager(this));
             List<Persona> l = Arrays.asList(
-                    new Persona("Mejoras de exoesqueletp", extras.getString("n1"),R.drawable.click),
-                    new Persona("Ratones excavando", extras.getString("sumaraton"),R.drawable.increment),
-                    new Persona("Plumbus plumbeando", extras.getString("n2"),R.drawable.increment),
+                    new Persona("Mejoras de exoesqueleto", extras.getString("n1"), R.drawable.cursor),
+                    new Persona("Ratones excavando", extras.getString("sumaraton"),R.drawable.raton),
+                    new Persona("Plumbus plumbeando", extras.getString("n2"), R.drawable.pichon),
                     new Persona("Pichones esclavizados", extras.getString("n3"),R.drawable.increment)
             );
             rv.setAdapter(new PersonaAdapter(l));
