@@ -69,7 +69,7 @@
             <Button
                 android:id="@+id/textomejora3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:onClick="compraclick"
                 android:padding="3dp"
                 android:text="100 Pepinillos"
@@ -127,7 +127,7 @@
             <Button
                 android:id="@+id/textomejora23"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:onClick="inc"
                 android:padding="3dp"
                 android:text="150 Pepinillos"
@@ -183,7 +183,7 @@
             <Button
                 android:id="@+id/textomejora33"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:onClick="inc2"
                 android:padding="3dp"
                 android:text="300 Pepinillos"
@@ -199,7 +199,8 @@
         android:layout_height="120dp"
         android:background="#47975D"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/botonVolver"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -207,8 +208,7 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:src="@drawable/raton"
-            ></ImageView>
+            android:src="@mipmap/persona_pajaro"></ImageView>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -238,7 +238,7 @@
             <Button
                 android:id="@+id/textomejora43"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:onClick="inc3"
                 android:padding="3dp"
                 android:text="600 Pepinillos"
@@ -251,10 +251,11 @@
         android:id="@+id/botonVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="volverDeTienda"
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="volverDeTienda"/>
+        app:layout_constraintTop_toBottomOf="@id/linearLayout4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
