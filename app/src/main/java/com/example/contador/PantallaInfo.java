@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,8 +30,10 @@ public class PantallaInfo extends ListActivity implements AdapterView.OnItemClic
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
     }
+    @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-
+        Persona persona = (Persona) adapterView.getItemAtPosition(i);
+        Toast.makeText(this, persona.getNombre(), Toast.LENGTH_LONG).show();
     }
     public void volver(View v){
         finish();

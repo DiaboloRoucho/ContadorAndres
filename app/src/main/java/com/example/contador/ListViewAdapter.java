@@ -19,8 +19,10 @@ public class ListViewAdapter extends ArrayAdapter<Persona> {
     public ListViewAdapter(@NonNull Context context, int resource, @NonNull List<Persona> ll ) {
         super(context, resource, ll);
     }
-    public  View getView(int posicion, @Nullable View convertView, @NonNull ViewGroup parent){
-        Persona p = getItem(posicion);
+    @NonNull
+    @Override
+    public  View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
+        Persona p = getItem(position);
         if (convertView==null)
             convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.activity_item_listview, parent, false);
         ((ImageView)convertView.findViewById(R.id.itemImageView)).setImageResource(p.getImagen());
