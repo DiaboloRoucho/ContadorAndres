@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<Persona> {
-    List<Persona> ll;
 
     public ListViewAdapter(@NonNull Context context, int resource, @NonNull List<Persona> ll ) {
         super(context, resource, ll);
