@@ -7,44 +7,32 @@
     tools:context=".PantallaInicio"
     android:background="@color/cardview_dark_background">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esta es la pantalla de inicio"
-        android:textSize="25dp"
-        android:textColor="#A4A4A4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358" />
 
     <Button
         android:id="@+id/Autores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Autores"
         android:onClick="irAutores"
+        android:text="Autores"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.142" />
+
+        app:layout_constraintTop_toBottomOf="@+id/Opciones"
+        app:layout_constraintVertical_bias="0.19" />
 
     <Button
         android:id="@+id/Jugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="irMainActivity"
         android:text="Jugar"
         app:layout_constraintBottom_toTopOf="@+id/Salir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845"
-        android:onClick="irMainActivity"/>
+        app:layout_constraintVertical_bias="0.736" />
 
     <Button
         android:id="@+id/Salir"
@@ -63,11 +51,12 @@
         android:id="@+id/Opciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opciones"
         android:onClick="irOpciones"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:text="Opciones"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintVertical_bias="0.146" />
 </androidx.constraintlayout.widget.ConstraintLayout>
