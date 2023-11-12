@@ -1,5 +1,6 @@
 package com.example.contador;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,9 +10,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView prick;
     BigInteger suma, click, incremento, precio, precioraton, valGordo, inc2, precio2, inc3, precio3, n1, n2, n3;
     int contpesao=0;
+    public final String msg = "Has seleccionado";
 
 
 
@@ -41,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         contador = (TextView) findViewById(R.id.texto);
         prick = findViewById(R.id.imagen1);
         valGordo = new BigInteger("0");
+        registerForContextMenu(contador);
         if (extras==null) {
             suma = new BigInteger("0");//suma = Integer.parseInt( contador.getText().toString());
             precio = new BigInteger("100");
@@ -81,6 +88,33 @@ public class MainActivity extends AppCompatActivity {
             rv.setAdapter(new PersonaAdapter(l));
         }
         incTemporal();
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuinfo){
+        if (v.getId()==R.id.texto){
+            menu.setHeaderTitle("Resetear");
+            getMenuInflater().inflate(R.menu.menumero, menu);
+        }
+    }
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item){
+
+        suma = new BigInteger("0");
+        contador.setText("0");
+        precio = new BigInteger("100");
+        precioraton = new BigInteger("150");
+        incremento = new BigInteger("0");
+        click = new BigInteger("1");
+        inc2 = new BigInteger("0");
+        precio2 = new BigInteger("300");
+        inc3 = new BigInteger("0");
+        precio3 = new BigInteger("600");
+        n1 = new BigInteger("0");
+        n2 = new BigInteger("0");
+        n3 = new BigInteger("0");
+        contador.setText(suma.toString());
+        return super.onContextItemSelected(item);
+
     }
 
     public void sumar(View v) {
