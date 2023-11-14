@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             rv.setHasFixedSize(true);
             rv.setLayoutManager(new LinearLayoutManager(this));
             List<Persona> l = Arrays.asList(
-                    new Persona("Mejoras de exoesqueleto", extras.getString("n1"), R.drawable.cursor),
+                    new Persona("Nvl exoesqueleto", extras.getString("n1"), R.drawable.cursor),
                     new Persona("Ratones excavando", extras.getString("sumaraton"),R.drawable.raton),
                     new Persona("Plumbus plumbeando", extras.getString("n2"), R.drawable.pichon),
                     new Persona("Pichones esclavizados", extras.getString("n3"),R.drawable.increment)
@@ -92,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuinfo){
         if (v.getId()==R.id.texto){
-            menu.setHeaderTitle("Resetear");
             getMenuInflater().inflate(R.menu.menumero, menu);
         }
     }
+
+    public void volver(View v) {finish();}
+
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         n1 = new BigInteger("0");
         n2 = new BigInteger("0");
         n3 = new BigInteger("0");
-        contador.setText(suma.toString());
+        format(suma);
         return super.onContextItemSelected(item);
 
     }

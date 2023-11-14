@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.042" />
 
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
@@ -32,20 +33,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textoInfo"
         app:layout_constraintVertical_bias="0.56" />
 
-    <Button
-        android:id="@+id/volverInfo"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
-        android:onClick="volver"
-        android:text="Volver"
+        android:layout_marginTop="216dp"
+        android:textColor="@color/colorText"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Créditos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoInfo"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textoInfo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,9 +43,23 @@
         android:src="@drawable/shopping_cart_fill0_wght400_grad0_opsz24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagen1"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.771" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="volver"
+        android:src="@drawable/salir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagen1"
+        app:layout_constraintVertical_bias="0.771" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"

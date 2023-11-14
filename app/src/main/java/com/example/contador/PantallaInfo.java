@@ -20,11 +20,11 @@ public class PantallaInfo extends ListActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_info);
-        volver = findViewById(R.id.volverInfo);
+
         List<Persona> p = Arrays.asList(
-                new Persona("Andrés Delgado", "Barros", R.drawable.person_pin_fill0_wght400_grad0_opsz24),
-                new Persona("Andrés Delgado", "Barros", R.drawable.person_pin_fill0_wght400_grad0_opsz24),
-                new Persona("Andrés Delgado", "Barros", R.drawable.person_pin_fill0_wght400_grad0_opsz24)
+                new Persona("Andrés Delgado", "Programador", R.drawable.person_pin_fill0_wght400_grad0_opsz24),
+                new Persona("Elvira Delgado", "BetaTester", R.drawable.person_pin_fill0_wght400_grad0_opsz24),
+                new Persona("Jose Luis Delgado", "Productor", R.drawable.person_pin_fill0_wght400_grad0_opsz24)
         );
         ListViewAdapter adapter = new ListViewAdapter(this, R.layout.activity_item_listview, p);
         setListAdapter(adapter);
