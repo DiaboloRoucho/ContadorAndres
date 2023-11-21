@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.contador.db.DbHelper;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView prick;
     BigInteger suma, click, incremento, precio, precioraton, valGordo, inc2, precio2, inc3, precio3, n1, n2, n3;
     int contpesao=0;
-    public final String msg = "Has seleccionado";
+
 
 
 
@@ -96,7 +99,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void volver(View v) {finish();}
+    public void volver(View v) {
+
+        finish();
+    }
+    public void guardar(View v){
+        DbHelper dbHelper = new DbHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        if (db != null) Toast.makeText(this, "Progreso Guardado", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "No se ha podido guardar", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
