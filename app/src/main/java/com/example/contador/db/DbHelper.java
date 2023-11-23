@@ -18,7 +18,10 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_VARIABLES + "(" +
-                "n_variable VARCHAR(10) PRIMARY KEY, " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                //"usuario TEXT NOT NULL, " +
+                //"password TEXT NOT NULL, " +
+                "n_variable VARCHAR(10) NOT NULL, " +
                 "valor TEXT NOT NULL)");
     }
 

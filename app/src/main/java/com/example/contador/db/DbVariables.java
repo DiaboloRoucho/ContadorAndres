@@ -20,6 +20,8 @@ public class DbVariables extends DbHelper{
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
+            //values.put("usuario", usuario);
+            //values.put("password", password);
             values.put("nombre", nombre);
             values.put("valor", valor);
             id = db.insert(TABLE_VARIABLES, null, values);

@@ -3,4 +3,5 @@
     <string name="nopepis">No hay pepinillos</string>
     <string name="pesao">Que no hay pesao</string>
     <string name="dinero"></string>
+    <string name="title_activity_formulario_registro">FormularioRegistro</string>
 </resources>
