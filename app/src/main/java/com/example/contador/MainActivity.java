@@ -4,27 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.contador.db.DbHelper;
-
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
@@ -103,12 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         finish();
     }
-    public void guardar(View v){
-        DbHelper dbHelper = new DbHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        if (db != null) Toast.makeText(this, "Progreso Guardado", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(this, "No se ha podido guardar", Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
