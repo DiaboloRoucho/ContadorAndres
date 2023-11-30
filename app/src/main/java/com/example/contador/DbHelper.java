@@ -1,8 +1,11 @@
 package com.example.contador;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -61,4 +64,41 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
+
+    void añadirUsuario(String usuario, String contraseña){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_USUARIO, usuario);
+        cv.put(COLUMN_CONTRASEÑA, contraseña);
+        cv.put(COLUMN_SUMA, "0");
+        cv.put(COLUMN_PRECIO1, "100");
+        cv.put(COLUMN_PRECIO2, "150");
+        cv.put(COLUMN_PRECIO3, "300");
+        cv.put(COLUMN_PRECIO4, "600");
+        cv.put(COLUMN_PRECIO4, "600");
+        cv.put(COLUMN_INCREMENTO1, "0");
+        cv.put(COLUMN_INCREMENTO2, "0");
+        cv.put(COLUMN_INCREMENTO3, "0");
+        cv.put(COLUMN_CLICK, "1");
+        cv.put(COLUMN_N1, "0");
+        cv.put(COLUMN_N2, "0");
+        cv.put(COLUMN_N3, "0");
+
+        long result = db.insert(TABLE_NAME, null, cv);
+        if (result == -1) {
+            Toast.makeText(context, "No se ha podido guardar", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Guardado", Toast.LENGTH_SHORT).show();
+        }
+    }
+    Cursor ReadData(String usuario){
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_USUARIO + " = " + usuario + ";";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if (db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
 }
