@@ -75,7 +75,6 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_PRECIO2, "150");
         cv.put(COLUMN_PRECIO3, "300");
         cv.put(COLUMN_PRECIO4, "600");
-        cv.put(COLUMN_PRECIO4, "600");
         cv.put(COLUMN_INCREMENTO1, "0");
         cv.put(COLUMN_INCREMENTO2, "0");
         cv.put(COLUMN_INCREMENTO3, "0");
@@ -99,6 +98,38 @@ public class DbHelper extends SQLiteOpenHelper {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
+    }
+    Cursor buscarUsuario(String usuario){
+        String query = "SELECT " + COLUMN_CONTRASEÑA + " FROM " + TABLE_NAME + " WHERE " + COLUMN_USUARIO + " = " + usuario + ";";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if (db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+    void guardarDatos(String row_id, String suma, String precio1, String precio2, String precio3, String precio4, String incremento1, String incremento2, String incremento3, String click, String n1, String n2, String n3){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_SUMA, "0");
+        cv.put(COLUMN_PRECIO1, "100");
+        cv.put(COLUMN_PRECIO2, "150");
+        cv.put(COLUMN_PRECIO3, "300");
+        cv.put(COLUMN_PRECIO4, "600");
+        cv.put(COLUMN_PRECIO4, "600");
+        cv.put(COLUMN_INCREMENTO1, "0");
+        cv.put(COLUMN_INCREMENTO2, "0");
+        cv.put(COLUMN_INCREMENTO3, "0");
+        cv.put(COLUMN_CLICK, "1");
+        cv.put(COLUMN_N1, "0");
+        cv.put(COLUMN_N2, "0");
+        cv.put(COLUMN_N3, "0");
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Fallo al guardar", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Guardado", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

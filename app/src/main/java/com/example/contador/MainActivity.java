@@ -49,8 +49,35 @@ public class MainActivity extends AppCompatActivity {
         valGordo = new BigInteger("0");
         registerForContextMenu(contador);
         db = new DbHelper(MainActivity.this);
-        usuario = extras.getString("usuario");
-        storeData();
+        if (getIntent().hasExtra("usuario")) {
+            usuario = extras.getString("usuario");
+            storeData();
+        }else {
+            //Log.e("localizador",extras.getString("precioraton")+ " " );
+            suma = new BigInteger(extras.getString("suma"));
+            precio = new BigInteger(extras.getString("precio"));
+            precioraton = new BigInteger(extras.getString("precioraton"));
+            incremento = new BigInteger(extras.getString("sumaraton"));
+            click = new BigInteger(extras.getString("click"));
+            inc2 = new BigInteger(extras.getString("inc2"));
+            precio2 = new BigInteger(extras.getString("precio2"));
+            inc3 = new BigInteger(extras.getString("inc3"));
+            precio3 = new BigInteger(extras.getString("precio3"));
+            n1 = new BigInteger(extras.getString("n1"));
+            n2 = new BigInteger(extras.getString("n2"));
+            n3 = new BigInteger(extras.getString("n3"));
+            RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerViewMain);
+            rv.setHasFixedSize(true);
+            rv.setLayoutManager(new LinearLayoutManager(this));
+            List<Persona> l = Arrays.asList(
+                    new Persona("Nvl exoesqueleto", extras.getString("n1"), R.drawable.cursor),
+                    new Persona("Ratones excavando", extras.getString("sumaraton"),R.drawable.raton),
+                    new Persona("Plumbus plumbeando", extras.getString("n2"), R.drawable.pichon),
+                    new Persona("Pichones esclavizados", extras.getString("n3"),R.drawable.increment)
+            );
+            rv.setAdapter(new PersonaAdapter(l));
+        }
+        format(suma);
 //        us_id = new ArrayList<>();
 //        us_usuarios = new ArrayList<>();
 //        us_contraseñas = new ArrayList<>();
@@ -93,17 +120,7 @@ public class MainActivity extends AppCompatActivity {
 //            n1 = new BigInteger(extras.getString("n1"));
 //            n2 = new BigInteger(extras.getString("n2"));
 //            n3 = new BigInteger(extras.getString("n3"));
-            format(suma);
-            RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerViewMain);
-            rv.setHasFixedSize(true);
-            rv.setLayoutManager(new LinearLayoutManager(this));
-            List<Persona> l = Arrays.asList(
-                    new Persona("Nvl exoesqueleto", extras.getString("n1"), R.drawable.cursor),
-                    new Persona("Ratones excavando", extras.getString("sumaraton"),R.drawable.raton),
-                    new Persona("Plumbus plumbeando", extras.getString("n2"), R.drawable.pichon),
-                    new Persona("Pichones esclavizados", extras.getString("n3"),R.drawable.increment)
-            );
-            rv.setAdapter(new PersonaAdapter(l));
+
  //       }
 
 
@@ -132,6 +149,10 @@ public class MainActivity extends AppCompatActivity {
             n3 = new BigInteger(cursor.getString(14));
             incTemporal();
         }
+    }
+    public void guardar(View v){
+        DbHelper db = new DbHelper(this);
+        db.guardarDatos(id, suma.toString(), precio.toString(), precioraton.toString(), precio2.toString(), precio3.toString(), incremento.toString(), inc2.toString(), inc3.toString(), click.toString(), n1.toString(), n2.toString(), n3.toString());
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuinfo){

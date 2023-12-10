@@ -61,6 +61,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imagen1"
         app:layout_constraintVertical_bias="0.771" />
 
+    <ImageView
+        android:id="@+id/imageGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:onClick="guardar"
+        android:src="@drawable/guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/imageView1" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
         android:layout_width="wrap_content"
