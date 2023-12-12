@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             n1 = new BigInteger(extras.getString("n1"));
             n2 = new BigInteger(extras.getString("n2"));
             n3 = new BigInteger(extras.getString("n3"));
+            usuario = extras.getString("user");
             RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerViewMain);
             rv.setHasFixedSize(true);
             rv.setLayoutManager(new LinearLayoutManager(this));
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void guardar(View v){
         DbHelper db = new DbHelper(this);
-        db.guardarDatos(id, suma.toString(), precio.toString(), precioraton.toString(), precio2.toString(), precio3.toString(), incremento.toString(), inc2.toString(), inc3.toString(), click.toString(), n1.toString(), n2.toString(), n3.toString());
+        db.guardarDatos(usuario, suma.toString(), precio.toString(), precioraton.toString(), precio2.toString(), precio3.toString(), incremento.toString(), inc2.toString(), inc3.toString(), click.toString(), n1.toString(), n2.toString(), n3.toString());
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuinfo){
@@ -253,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void irTienda(View v){
         Intent i = new Intent(this, Tienda.class);
+        i.putExtra("usuario", usuario);
         i.putExtra("dinero", suma.toString());
         i.putExtra("sumaraton", incremento.toString());
         i.putExtra("click", click.toString());

@@ -28,7 +28,7 @@ public class Registro extends AppCompatActivity {
 
         Intent i =  new Intent(Registro.this, MainActivity.class);
         DbHelper db = new DbHelper(Registro.this);
-        String us = usuario.getText().toString().trim();
+        String us = usuario.getText().toString().trim().toUpperCase();
         db.añadirUsuario(us, contraseña.getText().toString().trim());
         i.putExtra("usuario", us);
         startActivity(i);
@@ -37,14 +37,25 @@ public class Registro extends AppCompatActivity {
     public void login (View v){
         Intent i  = new Intent(Registro.this, MainActivity.class);
         DbHelper db = new DbHelper(this);
-        String pw = contraseña.getText().toString().trim();
-        Cursor cursor = db.ReadData(pw);
-        if (cursor.getCount() == 0) {
+        String pw = contraseña.getText().toString();
+        Cursor cursor = db.ReadData(usuario.getText().toString().trim().toUpperCase());
+        if (cursor.getCount() > 0) {
+            cursor.moveToNext();
+            if (!cursor.getString(2).equals(pw)){
+                Toast.makeText(this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                contraseña.setText("");
+            }else {
+                i.putExtra("usuario", pw);
+                startActivity(i);
+                finish();
+            }
+        }else {
             Toast.makeText(this, "Usuario no existe", Toast.LENGTH_SHORT).show();
-        } else if (cursor.getString(2).equals(pw)) {
-            i.putExtra("usuario", pw);
-            startActivity(i);
-            finish();
-        } else Toast.makeText(this, "Contraseña invalida", Toast.LENGTH_SHORT).show();
+        }
+//        else if (cursor.getString(2).equals(pw)) {
+//            i.putExtra("usuario", pw);
+//            startActivity(i);
+//            finish();
+//        } else Toast.makeText(this, "Contraseña invalida", Toast.LENGTH_SHORT).show();
     }
 }

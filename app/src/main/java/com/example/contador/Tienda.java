@@ -23,6 +23,7 @@ public class Tienda extends AppCompatActivity {
     Button compra, compraraton, compra2, compra3;
     ImageView prick;
     BigInteger suma, click, incremento, precio, precioraton, valGordo, inc2, precio2, inc3, precio3, n1, n2, n3;
+    String usuario;
     int contpesao=0;
 
 
@@ -54,6 +55,7 @@ public class Tienda extends AppCompatActivity {
         compraraton.setText(String.valueOf(precioraton)+ " Pepinillos");
         compra2.setText(String.valueOf(precio2)+ " Pepinillos");
         compra3.setText(String.valueOf(precio3)+ " Pepinillos");
+        usuario = extras.getString("usuario");
         incTemporal();
     }
 
@@ -150,6 +152,7 @@ public class Tienda extends AppCompatActivity {
         i.putExtra("n1", n1.toString());
         i.putExtra("n2", n2.toString());
         i.putExtra("n3", n3.toString());
+        i.putExtra("user", usuario);
         startActivity(i);
         finish();
     }

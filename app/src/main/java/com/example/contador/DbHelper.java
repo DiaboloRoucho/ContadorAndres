@@ -68,7 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
     void añadirUsuario(String usuario, String contraseña){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_USUARIO, usuario);
+        cv.put(COLUMN_USUARIO, usuario.toUpperCase());
         cv.put(COLUMN_CONTRASEÑA, contraseña);
         cv.put(COLUMN_SUMA, "0");
         cv.put(COLUMN_PRECIO1, "100");
@@ -108,23 +108,22 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-    void guardarDatos(String row_id, String suma, String precio1, String precio2, String precio3, String precio4, String incremento1, String incremento2, String incremento3, String click, String n1, String n2, String n3){
+    void guardarDatos(String usuario, String suma, String precio1, String precio2, String precio3, String precio4, String incremento1, String incremento2, String incremento3, String click, String n1, String n2, String n3){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_SUMA, "0");
-        cv.put(COLUMN_PRECIO1, "100");
-        cv.put(COLUMN_PRECIO2, "150");
-        cv.put(COLUMN_PRECIO3, "300");
-        cv.put(COLUMN_PRECIO4, "600");
-        cv.put(COLUMN_PRECIO4, "600");
-        cv.put(COLUMN_INCREMENTO1, "0");
-        cv.put(COLUMN_INCREMENTO2, "0");
-        cv.put(COLUMN_INCREMENTO3, "0");
-        cv.put(COLUMN_CLICK, "1");
-        cv.put(COLUMN_N1, "0");
-        cv.put(COLUMN_N2, "0");
-        cv.put(COLUMN_N3, "0");
-        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        cv.put(COLUMN_SUMA, suma);
+        cv.put(COLUMN_PRECIO1, precio1);
+        cv.put(COLUMN_PRECIO2, precio2);
+        cv.put(COLUMN_PRECIO3, precio3);
+        cv.put(COLUMN_PRECIO4, precio4);
+        cv.put(COLUMN_INCREMENTO1, incremento1);
+        cv.put(COLUMN_INCREMENTO2, incremento2);
+        cv.put(COLUMN_INCREMENTO3, incremento3);
+        cv.put(COLUMN_CLICK, click);
+        cv.put(COLUMN_N1, n1);
+        cv.put(COLUMN_N2, n2);
+        cv.put(COLUMN_N3, n3);
+        long result = db.update(TABLE_NAME, cv, COLUMN_USUARIO + " = ?", new String[]{usuario.toUpperCase()});
         if (result == -1){
             Toast.makeText(context, "Fallo al guardar", Toast.LENGTH_SHORT).show();
         }else {
