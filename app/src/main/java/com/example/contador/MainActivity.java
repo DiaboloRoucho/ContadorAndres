@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Bundle extras = getIntent().getExtras();
-        contador = (TextView) findViewById(R.id.texto);
+        contador = findViewById(R.id.texto);
         prick = findViewById(R.id.imagen1);
         valGordo = new BigInteger("0");
         registerForContextMenu(contador);
@@ -52,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("usuario")) {
             usuario = extras.getString("usuario");
             storeData();
+            Log.println(Log.ASSERT, "Quepasa", "Estoy aqui");
+
         }else {
+            Log.println(Log.ASSERT, "Quepasa", "Estoy aqui 2");
             //Log.e("localizador",extras.getString("precioraton")+ " " );
             suma = new BigInteger(extras.getString("suma"));
             precio = new BigInteger(extras.getString("precio"));
@@ -78,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
             );
             rv.setAdapter(new PersonaAdapter(l));
         }
+
         format(suma);
+
 //        us_id = new ArrayList<>();
 //        us_usuarios = new ArrayList<>();
 //        us_contraseñas = new ArrayList<>();
@@ -127,12 +133,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     void storeData(){
-        Cursor cursor = db.ReadData(usuario);
+
+        Cursor cursor = db.ReadData(usuario.toUpperCase());
+        Log.println(Log.ASSERT, "quepasaaa", cursor.getCount() + "");
         if (cursor.getCount() == 0){
             Toast.makeText(this, "Sin datos", Toast.LENGTH_SHORT).show();
         }else{
-
-
+            cursor.moveToNext();
             id = cursor.getString(0);
             usuario = cursor.getString(1);
             contraseña = cursor.getString(2);
@@ -149,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
             n2 = new BigInteger(cursor.getString(13));
             n3 = new BigInteger(cursor.getString(14));
             incTemporal();
+
         }
     }
     public void guardar(View v){
@@ -163,14 +171,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void volver(View v) {
-
         finish();
     }
 
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
-
         suma = new BigInteger("0");
         contador.setText("0");
         precio = new BigInteger("100");
@@ -190,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sumar(View v) {
-
         suma = suma.add(click);
         format(suma);
         contpesao=0;

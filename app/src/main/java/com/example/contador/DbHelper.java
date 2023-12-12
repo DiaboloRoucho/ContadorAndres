@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -91,7 +92,8 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
     Cursor ReadData(String usuario){
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_USUARIO + " = " + usuario + ";";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_USUARIO + " = '" + usuario + "';";
+        Log.println(Log.ASSERT, "query2", query);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
         if (db != null){
